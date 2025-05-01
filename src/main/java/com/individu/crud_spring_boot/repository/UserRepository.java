@@ -1,7 +1,8 @@
 package com.individu.crud_spring_boot.repository;
 
-import org.apache.catalina.User;
+
+import com.individu.crud_spring_boot.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<Users, String> {
 }
