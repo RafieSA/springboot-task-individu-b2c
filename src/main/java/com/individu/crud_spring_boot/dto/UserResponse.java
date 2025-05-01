@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder
 public class UserResponse {
+    private String id;
     private String username;
     private String email;
-    private String password;
     private Timestamp created_at;
 }

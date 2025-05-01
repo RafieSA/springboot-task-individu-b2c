@@ -36,5 +36,5 @@ public class Users {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private List<Motorcycle> motorcycles;
+    private List<Motorcycle> motorcycle;
 }
