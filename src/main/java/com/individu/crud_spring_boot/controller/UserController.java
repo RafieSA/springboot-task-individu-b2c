@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 @NoArgsConstructor
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("create-user")
+    @PostMapping("/create-user")
     String createUser(@RequestBody UserRequest request){
         return userService.createUser(request);
     }

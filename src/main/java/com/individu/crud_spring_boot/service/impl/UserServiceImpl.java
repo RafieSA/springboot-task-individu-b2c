@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String createUser(UserRequest request) {
-        return "";
+        return "test hit.";
     }
 
     @Override
@@ -31,11 +31,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateUser(String id, UserRequest request) {
-        return "";
+        return "test hit.";
     }
 
     @Override
     public String deleteUser(String id) {
-        return "";
+        return "test hit.";
     }
 }
