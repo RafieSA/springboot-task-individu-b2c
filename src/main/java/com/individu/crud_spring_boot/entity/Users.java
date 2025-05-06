@@ -18,8 +18,9 @@ import java.util.List;
 public class Users {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable=false)
-    private String id;
+    private Integer id;
     @Column(name = "username")
     private String username;
     @Column(name = "email")
@@ -33,6 +34,8 @@ public class Users {
     private Timestamp updatedAt;
     @Column(name = "deleted_at")
     private Timestamp deletedAt;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

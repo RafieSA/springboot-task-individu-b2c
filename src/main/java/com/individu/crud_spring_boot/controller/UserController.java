@@ -17,12 +17,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/create-user")
+    @PostMapping("/create")
     String createUser(@RequestBody UserRequest request){
         return userService.createUser(request);
     }
 
-    @GetMapping("/get-all-users")
+    @GetMapping("/getall")
     List<UserResponse> getAll(@RequestParam(required = false, defaultValue = "") String name){
         return userService.getAll(name);
     }
