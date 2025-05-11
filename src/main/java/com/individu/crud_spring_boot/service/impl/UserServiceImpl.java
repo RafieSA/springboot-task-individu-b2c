@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -43,13 +44,14 @@ public class UserServiceImpl implements UserService {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .createdAt(Timestamp.from(Instant.now()))
+                .isDeleted(false)
                 .build();
         userRepository.save(user);
         return "CREATE USER SUCCESS";
     }
 
     @Override
-    public String updateUser(String id, UserRequest request) {
+    public String updateUser(UUID id, UserRequest request) {
         userRepository.findById(id).map(data -> {
             data.setUsername(request.getUsername());
             data.setEmail(request.getEmail());
@@ -62,7 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String deleteUser(String id) {
+    public String deleteUser(UUID id) {
         userRepository.findById(id).map(data -> {
             data.setIsDeleted(Boolean.TRUE);
             userRepository.save(data);

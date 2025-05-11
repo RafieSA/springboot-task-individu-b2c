@@ -7,9 +7,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 public class MotorcycleRequest {
+    private String user_id;
     private String motorcycle_name;
-    private String motorcycle_year;
+    private Integer motorcycle_year;
     private String engine_cc;
     private String colour;
 }
