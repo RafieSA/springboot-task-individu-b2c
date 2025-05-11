@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,12 +41,32 @@ public class MotorcycleServiceImpl implements MotorcycleService {
 
     @Override
     public List<MotorcycleResponse> getAll(String name) {
-        return List.of();
+        List<MotorcycleResponse> list = motorcycleRepository.findAll().stream().map(data -> {
+            return MotorcycleResponse.builder()
+                    .motorcycle_id((data.getMotorcycleId()))
+                    .user_id(data.getUserId())
+                    .motorcycle_name(data.getMotorcycleName())
+                    .motorcycle_year(data.getMotorcycleYear())
+                    .colour(data.getColour())
+                    .engine_cc(Integer.valueOf(data.getEngineCc()))
+                    .build();
+        }).collect(Collectors.toList());
+        return list;
     }
 
     @Override
-    public List<MotorcycleResponse> getById(String name) {
-        return List.of();
+    public MotorcycleResponse getById(UUID id) {
+        return motorcycleRepository.findById(id)
+                .map(data -> MotorcycleResponse.builder()
+                    .motorcycle_id(data.getMotorcycleId())
+                        .user_id(data.getUserId())
+                        .motorcycle_name(data.getMotorcycleName())
+                        .motorcycle_year(data.getMotorcycleYear())
+                        .engine_cc(Integer.valueOf(data.getEngineCc()))
+                        .colour(data.getColour())
+                        .created_at(data.getCreatedAt())
+                    .build())
+                .orElseThrow(() -> new IllegalArgumentException("Motorcycle id not found"));
     }
 
     @Override

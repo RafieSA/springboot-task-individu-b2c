@@ -3,6 +3,7 @@ package com.individu.crud_spring_boot.dto;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -10,11 +11,11 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder
 public class MotorcycleResponse {
-    private String motorcycle_id;
-    private String user_id;
+    private UUID motorcycle_id;
+    private UUID user_id;
     private String motorcycle_name;
-    private String motorcycle_year;
-    private String engine_cc;
+    private Integer motorcycle_year;
+    private Integer engine_cc;
     private String colour;
     private Timestamp created_at;
 }

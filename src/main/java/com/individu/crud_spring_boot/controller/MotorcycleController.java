@@ -28,6 +28,11 @@ public class MotorcycleController {
         return motorcycleService.getAll(name);
     }
 
+    @GetMapping("/get/{id}")
+    MotorcycleResponse getById(@PathVariable UUID id){
+        return motorcycleService.getById(id);
+    }
+
     @PutMapping("/edit/{id}")
     String updateMotorcycle(@PathVariable String id, @RequestBody MotorcycleRequest request){
         return motorcycleService.updateMotorcycle(UUID.fromString(id), request);

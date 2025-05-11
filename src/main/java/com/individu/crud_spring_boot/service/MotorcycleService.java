@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface MotorcycleService {
     String createMotorcycle(MotorcycleRequest request);
     List<MotorcycleResponse> getAll(String name);
-    List<MotorcycleResponse> getById(String name);
+    MotorcycleResponse getById(UUID id);
     String updateMotorcycle(UUID id, MotorcycleRequest request);
     String deleteMotorcycle(UUID id);
 }

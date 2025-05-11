@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponse> getAll(String name) {
         List<UserResponse> list = userRepository.findAll().stream().map(data -> {
-            return UserResponse.builder().id(data.getId())
+            return UserResponse.builder()
                     .id(data.getId())
                     .username(data.getUsername())
                     .email(data.getEmail())
