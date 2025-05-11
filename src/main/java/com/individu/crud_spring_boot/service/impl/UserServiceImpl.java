@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -26,13 +27,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponse> getAll(String name) {
-        return List.of();
+        List<UserResponse> list = userRepository.findAll().stream().map(data -> {
+            return UserResponse.builder().id(data.getId())
+                    .id(data.getId())
+                    .username(data.getUsername())
+                    .email(data.getEmail())
+                    .build();
+        }).collect(Collectors.toList());
+
+        return list;
     }
 
-    @Override
-    public List<UserResponse> getById(String name) {
-        return List.of();
-    }
 
     @Override
     public String createUser(UserRequest request) {
